@@ -5,7 +5,12 @@ export interface ApiError extends Error {
   details?: any;
 }
 
-export const errorHandler = (err: ApiError, req: Request, res: Response, next: NextFunction) => {
+export const errorsMiddleware = (
+  err: ApiError,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const statusCode = err.statusCode || 500;
 
   res.status(statusCode).json({
