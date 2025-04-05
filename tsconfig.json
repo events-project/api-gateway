@@ -13,13 +13,17 @@
     "resolveJsonModule": true,
     "strictNullChecks": true,
     "baseUrl": ".",
+    "typeRoots": ["./node_modules/@types", "./types.d.ts"],
     "paths": {
       "@libs/*": ["src/libs/*"],
       "@controllers/*": ["src/controllers/*"],
-      "@middlewares/*": ["src/middleware/*"],
+      "@middleware": ["src/middleware"],
       "@routes/*": ["src/routes/*"]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*", "types.d.ts"],
+  "exclude": ["node_modules", "dist"],
+  "ts-node": {
+    "files": true
+  }
 }

@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@events-project/common": "^1.0.9",
+    "@events-project/grpc-account": "^1.0.3",
+    "@events-project/grpc-events": "^1.0.1",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
     "zod": "^3.24.2"

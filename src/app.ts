@@ -1,13 +1,14 @@
 import express from 'express';
 import routes from './routes';
 import { env } from '@libs/env';
-import { loggerMiddleware } from '@middlewares/logger';
-import { errorsMiddleware } from '@middlewares/errors';
 import { logger } from '@events-project/common';
+import { errorsMiddleware, loggerMiddleware } from '@middleware';
+
+const port = env('PORT');
 
 // Create Express app
 const app = express();
-const port = env('PORT');
+app.use(express.json());
 
 // Middleware
 app.use(loggerMiddleware);

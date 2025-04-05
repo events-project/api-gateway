@@ -1,14 +1,15 @@
-import { Request, Response, NextFunction } from 'express';
+import { eventsRpcClient } from '@events-project/grpc-events';
+import { Request, Response } from 'express';
 
-export const createEvent = async (req: Request, res: Response, next: NextFunction) => {
+export const createEvent = async (req: Request, res: Response): Promise<void> => {
   try {
-    // const eventData = req.body;
-    // const newEvent = await this.eventService.createEvent(eventData);
-    res.status(201).json({
-      success: true,
-      data: 'newEvent',
+    const result = await eventsRpcClient.createEvent({
+      appId: req.account?.id,
+      data: req.body?.data,
+      type: req.body?.type,
     });
+    res.status(201).json(result);
   } catch (error) {
-    next(error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 };
