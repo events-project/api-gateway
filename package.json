@@ -15,11 +15,13 @@
     "@events-project/common": "^1.0.9",
     "@events-project/grpc-account": "^1.0.3",
     "@events-project/grpc-events": "^1.0.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/node": "^20.10.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",

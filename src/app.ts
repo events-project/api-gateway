@@ -3,11 +3,13 @@ import routes from './routes';
 import { env } from '@libs/env';
 import { logger } from '@events-project/common';
 import { errorsMiddleware, loggerMiddleware } from '@middleware';
+import cors from 'cors';
 
 const port = env('PORT');
 
 // Create Express app
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // Middleware
