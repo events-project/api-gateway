@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import { ClientError } from 'nice-grpc';
 
 export interface ApiError extends Error {
   statusCode?: number;
@@ -17,7 +18,14 @@ export const errorsMiddleware = (
     return;
   }
 
+  if (err instanceof ClientError) {
+    res.status(500).json({
+      message: err.details || err.message || 'Unknown gRPC error',
+    });
+    return;
+  }
+
   res.status(statusCode).json({
-    details: err.details || null,
+    message: err.message || 'Unknown error',
   });
 };

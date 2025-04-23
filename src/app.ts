@@ -7,6 +7,14 @@ import cors from 'cors';
 
 const port = env('PORT');
 
+process.on('unhandledRejection', (reason) => {
+  logger.error(reason, `Unhandled Rejection: ${reason}`);
+});
+
+process.on('uncaughtException', (error) => {
+  logger.error(error, `Uncaught Exception: ${error}`);
+});
+
 // Create Express app
 const app = express();
 app.use(cors());
