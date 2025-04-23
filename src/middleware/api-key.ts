@@ -8,10 +8,7 @@ export const apiKeyAuth = async (
 ): Promise<void> => {
   try {
     const apiKey = req.headers['x-api-key'];
-    if (!apiKey) {
-      res.status(401).json({ message: 'Unauthorized' });
-      return;
-    }
+    if (!apiKey) throw new Error();
     const account = await accountRpcClient.validateApiKey({ key: apiKey as string });
     req.account = { id: account.id };
     next();

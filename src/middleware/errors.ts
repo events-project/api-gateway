@@ -1,13 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { ClientError } from 'nice-grpc';
 
-export interface ApiError extends Error {
-  statusCode?: number;
-  details?: any;
-}
-
 export const errorsMiddleware = (
-  err: ApiError,
+  err: any,
   req: Request,
   res: Response,
   next: NextFunction

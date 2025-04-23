@@ -1,7 +1,7 @@
 import { logger } from '@events-project/common';
 import { Request, Response, NextFunction } from 'express';
 
-export const loggerMiddleware = (req: Request, res: Response, next: NextFunction) => {
+export const loggerMiddleware = (req: Request, res: Response, next: NextFunction): void => {
   const start = new Date();
   res.on('finish', () => {
     const duration = new Date().getTime() - start.getTime();
